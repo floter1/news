@@ -117,11 +117,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'base/static/'
 
 # default static files settings for PythonAnywhere.
 # see https://help.pythonanywhere.com/pages/DjangoStaticFiles for more info
 MEDIA_ROOT = u'/home/floter1/news/media'
 MEDIA_URL = '/media/'
-STATIC_ROOT = u'/home/floter1/news/static'
-STATIC_URL = '/static/'
+STATIC_ROOT = u'/home/floter1/news/base/static'
+#STATIC_URL = '/static/'
