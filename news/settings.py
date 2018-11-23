@@ -25,7 +25,7 @@ SECRET_KEY = '*%!e)92viptm2_j-fvd@%1x38)z*7%)!bb3-ea$h&maeq8ok%%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'floter1.pythonanywhere.com']
+ALLOWED_HOSTS = [u'floter1.pythonanywhere.com', 'localhost']
 
 
 # Application definition
@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'articles.apps.ArticlesConfig', 
+    'articles.apps.ArticlesConfig',
     'members.apps.MembersConfig',
 ]
 
