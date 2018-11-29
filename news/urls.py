@@ -18,21 +18,12 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
-<<<<<<< HEAD
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('home/', include('articles.urls')),
-    path('users_home/', include('members.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-=======
  
 urlpatterns = [ 
     path('admin/', admin.site.urls), 
     path('home/', include('articles.urls')), 
     path('users_home/', include('members.urls')), 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
->>>>>>> bdc5bb060dcd97f6c7b0d6078c18424b7ec4a5a9
 
 
 

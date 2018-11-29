@@ -116,19 +116,10 @@ def users_home(request):
         
     else:
         
-        users_list = User.objects.all()
-#        members_list = Members.objects.all().filter(user_name = request.user.username)
-        
-#        mem_create, members_list = Members.objects.get_or_create(user_name = request.user.username)
-#        mem_create.save()
-#        members_list = Members.objects.all()
-
-        members_list = Members.objects.all().filter(user_name = request.user.username)
- 
-        
+        users_list = User.objects.all()        
         template = "users_home.html" 
         
-        return render(request, template, {'users' : users_list, 'members' : members_list})  
+        return render(request, template, {'users' : users_list})  
                
          
 def create(request1): 
