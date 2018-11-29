@@ -93,8 +93,14 @@ def profile(request):
      
         
     else:
+#        members_list = Members.objects.all()
+
         mem_create, members_list = Members.objects.get_or_create(user_name = request.user.username)
+        mem_create.save()        
         members_list = Members.objects.all().filter(user_name = request.user.username)
+
+
+ 
         
         template = "users_profile.html" 
         
@@ -115,8 +121,16 @@ def users_home(request):
      
         
     else:
+        users_list = User.objects.all()
+#        members_list = Members.objects.all().filter(user_name = request.user.username)
         
-        users_list = User.objects.all()        
+#        mem_create, members_list = Members.objects.get_or_create(user_name = request.user.username)
+#        mem_create.save()
+#        members_list = Members.objects.all()
+
+#        members_list = Members.objects.all().filter(user_name = request.user.username)
+ 
+        
         template = "users_home.html" 
         
         return render(request, template, {'users' : users_list})  
