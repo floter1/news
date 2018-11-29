@@ -4,7 +4,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import path, include
 
-from django.views.generic import TemplateView
 
 
 
@@ -14,36 +13,29 @@ from .models import Articles
 
 
 
-def home(request): 
-    """ 
-    Get data from models.py 
-    
-    """ 
-    if not request.user.is_authenticated:
-        
-        
-        return redirect('members:login1')	
-        
-    else:
-        
-        article_list = Articles.objects.all()
-        
-        template = "home.html" 
-        
-        context = { 
-        	'articles' : article_list 
-        	}
-        
-        return render(request, template, context)
-        
-        
-class header(TemplateView):
-    template_name = "html/header.html"
+def home(request):
+    """
+    Get data from models.py
 
-class footer(TemplateView):
-    template_name = "html/footer.html"
-        
-'''
+    """
+    if not request.user.is_authenticated:
+
+
+        return redirect('members:login1')
+
+    else:
+
+        article_list = Articles.objects.all()
+
+        template = "home.html"
+
+        context = {
+        	'articles' : article_list
+        	}
+
+        return render(request, template, context)
+
+
 def header(request):
     """
     Get data from models.py
@@ -61,7 +53,7 @@ def footer(request):
 
 
     return render(request, template)
-'''
+
 
 
 
