@@ -120,6 +120,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = 'base/static/'
+#STATIC_ROOT = u'base/static'
+
+#STATIC_ROOT = os.path.join(BASE_DIR, 'base/static/')
 
 # default static files settings for PythonAnywhere.
 # see https://help.pythonanywhere.com/pages/DjangoStaticFiles for more info

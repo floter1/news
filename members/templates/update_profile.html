@@ -7,19 +7,19 @@
 
 
 <tr>
-<td>First Name</td><td><input type="text" name="first_name" value="{{users.first_name}}"/></td>
+<td>First Name</td><td>"{{request.user.first_name}}"</td>
 </tr>
 
 <tr>
-<td>Last Name</td><td><input type="text" name="last_name" value="{{users.last_name}}"/></td>
+<td>Last Name</td><td>{{request.user.last_name}}"</td>
 </tr>
 
 <tr>
-<td>Password</td><td><input type="password" name="password" value="{{users.password}}"/></td>
+<td>Email</td><td>{{request.user.email}}</td>
 </tr>
 
 <tr>
-<td>Email</td><td><input type="email" name="email" value="{{users.email}}"/> </td>
+<td>Username</td><td>{{members.user_name}}</td>
 </tr>
 
 <tr>
