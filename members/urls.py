@@ -15,6 +15,7 @@ urlpatterns = [
     path('update/<int:usrId>', views.update, name='update'),
     path('up_profile/<int:memId>', views.up_profile, name='up_profile'),
     path('profile', views.profile, name='profile'),
+    path('buy', views.buy, name='buy'),
     path('login1', views.login1, name='login1'),
     path('logout1', views.logout1, name='logout1'),
     path('register/', views.register, name='register'),

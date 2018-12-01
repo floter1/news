@@ -4,9 +4,15 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
 
-
 # Create your views here.
 from .models import Members 
+
+
+import requests  
+import json
+
+
+
  
 
 def register(request): 
@@ -29,8 +35,8 @@ def register(request):
         user.last_name = request.POST["last_name"]   
                 
         member.user_name = request.POST["username"]
-        member.age = request.POST["age"]
-        member.phone = request.POST["phone"]
+#        member.age = request.POST["age"]
+#        member.phone = request.POST["phone"]
         
         user.save()
         member.save()
@@ -74,17 +80,8 @@ def login1(request):
 def logout1(request):
     logout(request)
     
-    if not request.user.is_authenticated:
-        
-        
-        return redirect('articles:home')	
-        
-    else:
-        
-        
-        return redirect('articles:home')
+    return redirect('articles:home')
     
-
 def profile(request):
     if not request.user.is_authenticated:
         
@@ -94,13 +91,10 @@ def profile(request):
         
     else:
 #        members_list = Members.objects.all()
-
+#        members_list = Members.objects.all().filter(user_name = request.user.username)
         mem_create, members_list = Members.objects.get_or_create(user_name = request.user.username)
         mem_create.save()        
         members_list = Members.objects.all().filter(user_name = request.user.username)
-
-
- 
         
         template = "users_profile.html" 
         
@@ -122,19 +116,36 @@ def users_home(request):
         
     else:
         users_list = User.objects.all()
-#        members_list = Members.objects.all().filter(user_name = request.user.username)
-        
-#        mem_create, members_list = Members.objects.get_or_create(user_name = request.user.username)
-#        mem_create.save()
-#        members_list = Members.objects.all()
 
-#        members_list = Members.objects.all().filter(user_name = request.user.username)
+        url = "https://api.coinhive.com/user/balance"
+        data = {'data':[{'name':'chris'}, {'secret':'97tEENX9hYZoMj6AbKFHYzEYCx7WRk9R'}]}
+        headers = {'content-type': 'application/json'}
+        r=requests.post(url, data=json.dumps(data), headers=headers)
+        r.text
+
  
         
         template = "users_home.html" 
         
-        return render(request, template, {'users' : users_list})  
-               
+        return render(request, template, {'users' : users_list, 'rjson' : r.text})  
+
+def buy(request):
+    
+    members = Members.objects.get(user_name = request.user.username)
+    
+    if members.points is not None:
+        members.points = float(members.points) + 1
+        
+    else:
+        
+        members.points = 0
+        members.money = 0        
+    
+    members.save()
+    return redirect('members:profile') 
+    
+
+
          
 def create(request1): 
     """ 
@@ -182,10 +193,7 @@ def update(request, usrId):
     if request.method=='GET': 
         return render(request, template, context) 
     else: 
- 
- 
 
-        
         users.first_name = request.POST["first_name"] 
         users.last_name = request.POST["last_name"]
         users.email = request.POST["email"]
@@ -211,15 +219,27 @@ def up_profile(request, memId):
     template = "update_profile.html" 
     if request.method=='GET': 
         return render(request, template, context) 
-    else: 
- 
- 
+    else:
+        
+        if members.user_name=='admin':
+            
+            members.age = request.POST["age"]
+            members.phone = request.POST["phone"]
+            members.upline = request.POST["upline"]
+            members.tin = request.POST["tin"]
+            members.points = request.POST["points"]
+            members.money = request.POST["money"]
+            members.save()
+        
+        else:
+            members.age = request.POST["age"]
+            members.phone = request.POST["phone"]
+            members.upline = request.POST["upline"]
+            members.tin = request.POST["tin"]
+            members.save()
 
-        
-        members.age = request.POST["age"]
-        members.phone = request.POST["phone"]
-        members.save()
-        
+
+            
         
         
         return redirect('members:profile')
