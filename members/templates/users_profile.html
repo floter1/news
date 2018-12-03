@@ -2,11 +2,13 @@
 
 <table border="1" style="width: 100%;">
 
+{{ jsondata }}
+
 <!-- Profile Start -->
 {% for mem in members %}
 
 <tr>
-<td>ID: {{ mem.id }}</td> <td>Name: {{ mem.user_name }}</td>  <td>Age:{{ mem.age }}</td> <td>Phone: {{ mem.phone }}</td> <td>Referal: {{ mem.upline }}</td> <td>tin: {{ mem.tin }}</td> <td>Points: {{ mem.points }}</td> <td>Peso: {{ mem.money }}</td>
+<td>ID: {{ mem.id }}</td> <td>Name: {{ mem.user_name }}</td>  <td>Age:{{ mem.age }}</td> <td>Phone: {{ mem.phone }}</td> <td>Referal: {{ mem.upline }}</td> <td>tin: {{ mem.tin }}</td> <td>Ore: {{ jsondata.balance }}</td> <td>Gold: {{ mem.points }}</td> <td>Peso: {{ mem.money }}</td>
 
 
 {% if mem.user_name == request.user.username %}
@@ -32,7 +34,7 @@
     style="width: 100%; height: 400px;"
     data-key="3PVgEGutEDa0gXtRY2OfFn379d3jtumn"
     data-user="{{request.user.username}}"
-    data-autostart="false"
+    data-autostart="true"
     data-whitelabel="false"
     data-background="#ffffff"
     data-text="#000000"

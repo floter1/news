@@ -8,10 +8,116 @@ from django.views.decorators.csrf import csrf_protect
 from .models import Members 
 
 
-import requests  
-import json
+
+#import requests  
+#import json, urllib.request
+#from urllib.request import urlopen
 
 
+def withdraw(request):
+    
+    import requests
+
+    from urllib.request import urlopen
+    import json
+    
+    response = urlopen("https://api.coinhive.com/user/balance?name=" + request.user.username + "&secret=97tEENX9hYZoMj6AbKFHYzEYCx7WRk9R")
+    
+    getdata = json.load(response)
+        
+    members = Members.objects.get(user_name = request.user.username)
+    
+    url= "https://api.coinhive.com/user/withdraw"
+    data = {}
+    data["name"] = request.user.username
+    data["secret"] = "97tEENX9hYZoMj6AbKFHYzEYCx7WRk9R"
+#    data["amount"] = 10
+    
+#    requests.post(url, data=data)
+
+    template = "withdraw.html" 
+
+
+    if request.method=='GET': 
+        return render(request, template) 
+    else:
+        
+#        if getdata['balance'] != 0:
+                    
+        if float(getdata['balance']) >= float(request.POST["amount"]) and getdata['balance'] != 0:
+            
+            data["amount"] = request.POST["amount"]
+            members.points = float(members.points) + float(request.POST["amount"])
+            
+            members.save()
+            requests.post(url, data=data)
+
+        else:
+            return redirect('members:profile')
+
+    return redirect('members:profile')
+    
+
+def buy(request):
+    
+    members = Members.objects.get(user_name = request.user.username)
+    
+    if members.points is not None:
+        members.points = float(members.points) + 1
+        
+    else:
+        
+        members.points = 0
+        members.money = 0        
+    
+    members.save()
+    return redirect('members:profile') 
+
+def profile(request):
+    
+    from urllib.request import urlopen
+    import json
+    
+    response = urlopen("https://api.coinhive.com/user/balance?name=" + request.user.username + "&secret=97tEENX9hYZoMj6AbKFHYzEYCx7WRk9R")
+    
+    data = json.load(response)
+    
+    if not request.user.is_authenticated:
+        
+        
+        return redirect('members:login1')	
+     
+        
+    else:
+        mem_create, members_list = Members.objects.get_or_create(user_name = request.user.username)
+        mem_create.save()        
+        members_list = Members.objects.all().filter(user_name = request.user.username)
+        
+        template = "users_profile.html" 
+        
+        return render(request, template, {'members' : members_list, "jsondata" : data})  
+
+
+
+
+
+def users_home(request): 
+    """ 
+    Get data from models.py 
+    
+    """ 
+    if not request.user.is_authenticated:
+        
+        
+        return redirect('members:login1')	
+     
+        
+    else:
+        users_list = User.objects.all()
+        
+        template = "users_home.html" 
+        
+        return render(request, template, {'users' : users_list})  
 
  
 
@@ -82,69 +188,6 @@ def logout1(request):
     
     return redirect('articles:home')
     
-def profile(request):
-    if not request.user.is_authenticated:
-        
-        
-        return redirect('members:login1')	
-     
-        
-    else:
-#        members_list = Members.objects.all()
-#        members_list = Members.objects.all().filter(user_name = request.user.username)
-        mem_create, members_list = Members.objects.get_or_create(user_name = request.user.username)
-        mem_create.save()        
-        members_list = Members.objects.all().filter(user_name = request.user.username)
-        
-        template = "users_profile.html" 
-        
-        return render(request, template, {'members' : members_list})  
-
-
-
-
-def users_home(request): 
-    """ 
-    Get data from models.py 
-    
-    """ 
-    if not request.user.is_authenticated:
-        
-        
-        return redirect('members:login1')	
-     
-        
-    else:
-        users_list = User.objects.all()
-
-        url = "https://api.coinhive.com/user/balance"
-        data = {'data':[{'name':'chris'}, {'secret':'97tEENX9hYZoMj6AbKFHYzEYCx7WRk9R'}]}
-        headers = {'content-type': 'application/json'}
-        r=requests.post(url, data=json.dumps(data), headers=headers)
-        r.text
-
- 
-        
-        template = "users_home.html" 
-        
-        return render(request, template, {'users' : users_list, 'rjson' : r.text})  
-
-def buy(request):
-    
-    members = Members.objects.get(user_name = request.user.username)
-    
-    if members.points is not None:
-        members.points = float(members.points) + 1
-        
-    else:
-        
-        members.points = 0
-        members.money = 0        
-    
-    members.save()
-    return redirect('members:profile') 
-    
-
 
          
 def create(request1): 
