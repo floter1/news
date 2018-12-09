@@ -6,11 +6,80 @@ from django.urls import path, include
 
 from django.views.generic import TemplateView
 
+#From Members
+from django.views.decorators.csrf import csrf_protect
+
 
 
 
 # Create your views here.
 from .models import Articles
+#from .models import Members 
+
+
+
+def bsell_profile(request):
+    
+        
+    if not request.user.is_authenticated:
+        
+        
+        return redirect('members:login1')	
+     
+        
+    else:
+        bprofile_create, bprofile_list = Bsell.objects.get_or_create(user_name = request.user.username)
+        bprofile_create.save()        
+        bprofile_list = Bsell.objects.all().filter(user_name = request.user.username)
+        
+        template = "bsell_profile.html" 
+        
+        return render(request, template, {'bprofiles' : bprofile_list})  
+
+
+def up_bprofile(request, profId): 
+    """ 
+    Get data from models.py 
+    """ 
+    
+    bprofiles = Bsell.objects.get(id=memId) 
+ 
+    context = { 
+        'bprofiles' : bprofiles 
+    } 
+ 
+    template = "up_bprofile.html" 
+    if request.method=='GET': 
+        return render(request, template, context) 
+    else:
+        
+        if bprofiles.user_name=='admin':
+            
+            bprofiles.user_name = request.POST["user_name"]
+            bprofiles.owner = request.POST["owner"]
+            bprofiles.coins = request.POST["coins"]
+            bprofiles.price = request.POST["price"]
+            bprofiles.save()
+        
+#        else:
+            
+#            members.save()
+        
+        return redirect('members:profile')
+
+        
+        
+def del_bprofile(request1, profId): 
+    """ 
+    Get data from models.py 
+    """ 
+ 
+    prof = Bsell.objects.get(id=profId) 
+    prof.delete() 
+    return redirect('members:users_home') 
+
+
+
 
 
 

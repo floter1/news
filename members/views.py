@@ -9,9 +9,6 @@ from .models import Members
 
 
 
-#import requests  
-#import json, urllib.request
-#from urllib.request import urlopen
 
 
 def withdraw(request):
@@ -31,9 +28,7 @@ def withdraw(request):
     data = {}
     data["name"] = request.user.username
     data["secret"] = "97tEENX9hYZoMj6AbKFHYzEYCx7WRk9R"
-#    data["amount"] = 10
-    
-#    requests.post(url, data=data)
+
 
     template = "withdraw.html" 
 
@@ -42,7 +37,7 @@ def withdraw(request):
         return render(request, template) 
     else:
         
-#        if getdata['balance'] != 0:
+
                     
         if float(getdata['balance']) >= float(request.POST["amount"]) and getdata['balance'] != 0:
             

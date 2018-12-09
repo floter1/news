@@ -16,3 +16,9 @@ class Comment(models.Model):
     points = models.CharField(max_length=250)
     author = models.CharField(max_length=250)
     commentor = models.CharField(max_length=250)
+    
+class Bsell(models.Model):
+    user_name = models.CharField(max_length=250)
+    owner = models.CharField(max_length=250, default="admin")
+    coins = models.FloatField(null=True, blank=True, default=0.0)
+    price = models.FloatField(null=True, blank=True, default=1.0)
