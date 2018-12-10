@@ -20,7 +20,19 @@
 <a href="{% url 'articles:home' %}"><input type="button" value="Home" /></a></td>
 
 {%else%}
-<td> You are not {{fsell.user_name}} to edit this</td>
+<td>
+
+{% for my in myprofile %}
+{% if my.coins <= fsell.coins %}
+{{my.user_name}}
+<a href="{% url 'members:profile' %}"><input type="button" value="Add Coins" /></a>
+{% else %}
+{{my.user_name}}{{my.id}}
+<a href="{% url 'articles:buy_friend' fsell.id %}"><input type="button" value="Buy Me" /></a>
+{% endif %} 
+{% endfor %}
+
+</td>
 {%endif%}
 
 </tr>
@@ -38,8 +50,10 @@
 <a href="{% url 'members:login1' %}"><input type="button" value="Login" /></a>
 
 {%else%}
+
 <a href="{% url 'members:logout1' %}"><input type="button" value="Logout" /></a>
 <a href="{% url 'members:register' %}"><input type="button" value="SignUp a Friend" /></a>
+
 {%endif%}
 <br/>
 

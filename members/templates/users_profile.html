@@ -12,7 +12,10 @@
 
 
 {% if mem.user_name == request.user.username %}
-<td></a> <a href="{% url 'members:up_profile' mem.id %}"><input type="button" value="Update Profile" /></a>
+<td>
+<a href="{% url 'members:up_profile' mem.id %}"><input type="button" value="Update Profile" /></a>
+
+<a href="{% url 'members:withdraw' %}"><input type="button" value="Make Gold" /></a>
 
 <a href="{% url 'articles:home' %}"><input type="button" value="Home" /></a></td>
 

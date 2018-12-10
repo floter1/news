@@ -10,7 +10,7 @@
 
 
 {% if prof.user_name == request.user.username %}
-<td><a href="{% url 'articles:del_bprofile' prof.id %}"><input type="button" value="Delete Profile" /></a> <a href="{% url 'articles:up_bprofile' prof.id %}"><input type="button" value="Edit Profile" /></a>
+<td><a href="{% url 'articles:del_bprofile' prof.id %}"><input type="button" value="Delete Profile" /></a> <a href="{% url 'articles:sell_friends' %}"><input type="button" value="Buy Friends" /></a>
 
 <a href="{% url 'articles:home' %}"><input type="button" value="Home" /></a></td>
 
@@ -20,7 +20,8 @@
 <a href="{% url 'articles:home' %}"><input type="button" value="Home" /></a></td>
 
 {%else%}
-<td> You are not {{profile.user_name}} to edit this</td>
+<td>
+</td>
 {%endif%}
 
 </tr>
