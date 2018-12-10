@@ -12,7 +12,7 @@
 
 
 {% if mem.user_name == request.user.username %}
-<td><a href="{% url 'members:del_profile' mem.id %}"><input type="button" value="Delete User" /></a> <a href="{% url 'members:up_profile' mem.id %}"><input type="button" value="Edit User" /></a>
+<td></a> <a href="{% url 'members:up_profile' mem.id %}"><input type="button" value="Update Profile" /></a>
 
 <a href="{% url 'articles:home' %}"><input type="button" value="Home" /></a></td>
 

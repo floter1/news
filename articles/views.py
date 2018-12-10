@@ -7,19 +7,32 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 
 #From Members
-from django.views.decorators.csrf import csrf_protect
+#from django.views.decorators.csrf import csrf_protect
 
 
 
 
 # Create your views here.
 from .models import Articles
-#from .models import Members 
+from .models import Bsell
+
+
+
+def sell_friends(request):
+    
+    forsale = Bsell.objects.exclude(user_name = request.user.username)
+    
+    
+    template = "bsell_home.html"
+    
+    return render(request, template, {"forsale" : forsale})
 
 
 
 def bsell_profile(request):
     
+    
+#    bprofile_list = Articles.objects.all()
         
     if not request.user.is_authenticated:
         
@@ -42,7 +55,7 @@ def up_bprofile(request, profId):
     Get data from models.py 
     """ 
     
-    bprofiles = Bsell.objects.get(id=memId) 
+    bprofiles = Bsell.objects.get(id=profId) 
  
     context = { 
         'bprofiles' : bprofiles 
@@ -76,7 +89,7 @@ def del_bprofile(request1, profId):
  
     prof = Bsell.objects.get(id=profId) 
     prof.delete() 
-    return redirect('members:users_home') 
+    return redirect('members:profile') 
 
 
 

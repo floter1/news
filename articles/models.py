@@ -6,14 +6,14 @@ class Articles(models.Model):
     title = models.CharField(max_length=250)
     content = models.TextField(max_length=250)
     writer = models.CharField(max_length=250)
-    points = models.CharField(max_length=250)
-    like = models.CharField(max_length=250)
+    points = models.FloatField(null=True, blank=True, default=0.0)
+    like = models.FloatField(null=True, blank=True, default=0.0)
 
 class Comment(models.Model):
     title = models.CharField(max_length=250)
     content = models.CharField(max_length=250)
-    like = models.CharField(max_length=250)
-    points = models.CharField(max_length=250)
+    like = models.FloatField(null=True, blank=True, default=0.0)
+    points = models.FloatField(null=True, blank=True, default=0.0)
     author = models.CharField(max_length=250)
     commentor = models.CharField(max_length=250)
     

@@ -3,24 +3,24 @@
 <table border="1" style="width: 100%;">
 
 <!-- Profile Start -->
-{% for prof in bprofiles %}
+{% for fsell in forsale %}
 
 <tr>
-<td>ID: {{ prof.id }}</td> <td>Name: {{ prof.user_name }}</td>  <td>Owner:{{ prof.owner }}</td> <td>Coins: {{ prof.coins }}</td> <td>Price: {{ prof.price }}</td>
+<td>ID: {{ fsell.id }}</td> <td>Name: {{ fsell.user_name }}</td>  <td>Owner:{{ fsell.owner }}</td> <td>Coins: {{ fsell.coins }}</td> <td>Price: {{ fsell.price }}</td>
 
 
-{% if prof.user_name == request.user.username %}
-<td><a href="{% url 'articles:del_bprofile' prof.id %}"><input type="button" value="Delete Profile" /></a> <a href="{% url 'articles:up_bprofile' prof.id %}"><input type="button" value="Edit Profile" /></a>
+{% if fsell.user_name == request.user.username %}
+<td> <a href="{% url 'articles:up_bprofile' fsell.id %}"><input type="button" value="Edit Profile" /></a>
 
 <a href="{% url 'articles:home' %}"><input type="button" value="Home" /></a></td>
 
 {% elif request.user.username == "admin" %}
-<td><a href="{% url 'articles:del_bprofile' prof.id %}"><input type="button" value="Delete Profile" /></a> <a href="{% url 'articles:up_bprofile' prof.id %}"><input type="button" value="Edit Profile" /></a>
+<td><a href="{% url 'articles:del_bprofile' fsell.id %}"><input type="button" value="Delete Profile" /></a> <a href="{% url 'articles:up_bprofile' fsell.id %}"><input type="button" value="Edit Profile" /></a>
 
 <a href="{% url 'articles:home' %}"><input type="button" value="Home" /></a></td>
 
 {%else%}
-<td> You are not {{profile.user_name}} to edit this</td>
+<td> You are not {{fsell.user_name}} to edit this</td>
 {%endif%}
 
 </tr>
