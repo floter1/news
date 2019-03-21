@@ -12,25 +12,40 @@ FScratch
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 {% load static %}
+<!--  
+{% static 'css/boot/bootstrap.css' %}
+-->
 
-{% static 'css/bootstrap/bootstrap.css' %}
+<link rel="stylesheet" href="{% static 'css/boot/bootstrap.min.css' %}" />
 
-<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
-
-<script type="text/javascript" src="css/bootstrap/jquery1.min.js">
+  
+<script src="{% static 'js/boot/jquery.min.js' %}">
 </script>
 
-<script type="text/javascript" src="js/bootstrap/bootstrap.min.js">
+
+<script src="{% static 'js/boot/bootstrap.min.js' %}">
 </script>
+
 
 <!--
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/boot/bootstrap.min.css" />
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+<script src="js/boot/jquery.min.js">
+</script>
 
-<!-- Latest compiled JavaScript -->
+
+<script src="js/boot/bootstrap.min.js">
+</script>
+-->
+
+<!-- Latest compiled and minified CSS
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  -->
+
+<!-- jQuery library
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+
+<!-- Latest compiled JavaScript
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 -->
 
@@ -48,7 +63,7 @@ FScratch
 </div>
 
 
-<-- Body Here -->
+<!-- Body Here -->
 
 
 <div class="container text-center">   
@@ -98,11 +113,6 @@ FScratch
             <div class="panel-body">
 
 <!-- Mid Content -->
-
-
-
-
-
 
 
 
