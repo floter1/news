@@ -25,7 +25,7 @@ SECRET_KEY = '*%!e)92viptm2_j-fvd@%1x38)z*7%)!bb3-ea$h&maeq8ok%%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'floter1.pythonanywhere.com', 'localhost', 'floter1.serveo.net']
+ALLOWED_HOSTS = [u'floter1.pythonanywhere.com', 'localhost', '10.0.0.14', 'floter1.serveo.net']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'articles.apps.ArticlesConfig', 
     'members.apps.MembersConfig',
+    'avatar',
 ]
 
 MIDDLEWARE = [
@@ -126,7 +127,11 @@ STATIC_ROOT = u'base/static/'
 
 # default static files settings for PythonAnywhere.
 # see https://help.pythonanywhere.com/pages/DjangoStaticFiles for more info
-MEDIA_ROOT = u'/home/floter1/news/media'
-MEDIA_URL = '/media/'
+#MEDIA_ROOT = u'/home/floter1/news/media'
+#MEDIA_URL = '/media/'
 #STATIC_ROOT = u'/home/floter1/news/base/static'
 #STATIC_URL = '/static/'
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

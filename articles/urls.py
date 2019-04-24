@@ -18,6 +18,7 @@ urlpatterns = [
     path('bprofile/', views.bsell_profile, name='bsell_profile'),
     path('sell_friends/', views.sell_friends, name='sell_friends'),
     path('buy_friend/<int:fsellId>', views.buy_friend, name='buy_friend'),
+    path('avatar/', include('avatar.urls')),
 
 
 

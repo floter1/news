@@ -10,4 +10,5 @@ class Members(models.Model):
 	tin = models.CharField(max_length=250)
 	points = models.FloatField(null=True, blank=True, default=0.0)
 	money = models.FloatField(null=True, blank=True, default=0.0)
+	photo = models.ImageField(upload_to='avatar')
 	

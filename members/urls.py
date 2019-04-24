@@ -18,7 +18,7 @@ urlpatterns = [
     path('buy', views.buy, name='buy'),
     path('login1', views.login1, name='login1'),
     path('logout1', views.logout1, name='logout1'),
-    path('register/', views.register, name='register'),
-    path('withdraw/', views.withdraw, name='withdraw'),
+    path('register', views.register, name='register'),
+    path('withdraw', views.withdraw, name='withdraw'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

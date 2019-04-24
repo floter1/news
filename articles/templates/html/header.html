@@ -73,9 +73,11 @@ FScratch
   <div class="row">
     <div class="col-sm-3 well">
     
-      <div class="well">
-        <p><a href="#">My Profile</a></p>
-        <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
+      <div class="well"> 
+        <p><a href="{% url 'avatar_change' %}">My Profile</a></p>
+        <!-- <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">  -->
+        {% load avatar_tags %}
+        {% avatar user 256 %}
       </div>
       
       <div class="well">
@@ -87,11 +89,12 @@ FScratch
           <span class="label label-info">Football</span>
           <span class="label label-warning">Gaming</span>
           <span class="label label-danger">Friends</span>
+          <span class="label label-info"><a href="{% url 'avatar_change' %}">Change your avatar</a> </span>
         </p>
       </div>
       
       <div class="alert alert-success fade in">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">close</a>
         <p><strong>Ey!</strong></p>
         People are looking at your profile. Find out who.
       </div>
@@ -113,9 +116,5 @@ FScratch
             <div class="panel-body">
 
 <!-- Mid Content -->
-
-
-
-
 
 
