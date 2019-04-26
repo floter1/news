@@ -83,6 +83,7 @@ FScratch
         <p><a href="{% url 'avatar_change' %}">My Profile</a></p>
         {% avatar user %}
         {% else %}
+        <div class="label label-info"><a href="{% url 'avatar_change' %}">Change your avatar</a> </div>
         Welcome
         {% endif %}
 
@@ -97,7 +98,7 @@ FScratch
           <span class="label label-info">Football</span>
           <span class="label label-warning">Gaming</span>
           <span class="label label-danger">Friends</span>
-          <span class="label label-info"><a href="{% url 'avatar_change' %}">Change your avatar</a> </span>
+          
         </p>
       </div>
       

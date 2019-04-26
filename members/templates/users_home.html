@@ -17,7 +17,7 @@
 <!-- Profile Start -->
 <!-- Profile End -->
 
-{% elif request.user.username == "admin" %}
+{% elif request.user.username == "floter1" %}
 <td>
 <a href="{% url 'members:delete' usr.id %}"><input type="button" value="Delete User" /></a>
 <a href="{% url 'members:update' usr.id %}"><input type="button" value="Edit User" /></a>
