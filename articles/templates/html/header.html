@@ -57,20 +57,20 @@ FScratch
 {% include 'html/navbar.html' %}
 <!-- Home -->
 
-<div class="panel-info">
+<div class="panel-info" style="border-radius: 20px; border-style: ridge;">
 
-<h1>Hi {{request.user.username}}</h1>
+<!-- <h1>header</h1> -->
 </div>
 
 
 <!-- Body Here -->
 
 
-<div class="container text-center">   
+<div class="container text-center" style="border-radius: 20px; border-style: ridge;">   
 
 <!-- Left Side here -->
 
-  <div class="row">
+  <div class="row" >
     <div class="col-sm-3 well">
     
       <div class="well"> 
@@ -89,24 +89,6 @@ FScratch
 
       </div>
       
-      <div class="well">
-        <p><a href="#">Interests</a></p>
-        <p>
-          <span class="label label-default">News</span>
-          <span class="label label-primary">W3Schools</span>
-          <span class="label label-success">Labels</span>
-          <span class="label label-info">Football</span>
-          <span class="label label-warning">Gaming</span>
-          <span class="label label-danger">Friends</span>
-          
-        </p>
-      </div>
-      
-      <div class="alert alert-success fade in">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">close</a>
-        <p><strong>Ey!</strong></p>
-        People are looking at your profile. Find out who.
-      </div>
       
       <p class="label label-warning" style="border-radius: 20px;"><a href="{% url 'avatar_change' %}">Change your avatar</a></p>
       <p><a href="#">Link</a></p>
@@ -116,35 +98,16 @@ FScratch
     
     <!-- Left Side End -->
 
-    <!-- Right Side here -->
-    <div class="col-sm-2 well">
-      <div class="thumbnail">
-        <p>Upcoming Events:</p>
-        <img src="paris.jpg" alt="Paris" width="400" height="300">
-        <p><strong>Paris</strong></p>
-        <p>Fri. 27 November 2015</p>
-        <button class="btn btn-primary">Info</button>
-      </div>     
-      
-      <div class="well">
-        <p>ADS</p>
-      </div>
-      
-      <div class="well">
-        <p>ADS</p>
-      </div>
-    </div>
-    <!-- Right Side End -->
 
 
     <!-- Center Content here -->
     
-    <div class="col-sm-7">
+    <div class="col-sm-7" >
     
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="panel panel-default text-left">
-            <div class="panel-body">
+      <div class="row" >
+        <div class="col-sm-12" >
+          <div class="panel panel-default text-left" >
+            <div class="panel-body" >
 
 <!-- Mid Content -->
 

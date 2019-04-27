@@ -5,10 +5,8 @@ style="background-color: white;
 border-radius: 20px">
 
 <tr>
-<th><ul><li>FirstName</li></ul></th>
-<th><ul><li>LastName</li></ul></th>
-<th><ul><li>Username</li></ul></th>
-<th><ul><li>Email</li></ul></th>
+<th><ul><li>Details</li></ul></th>
+
 <th><ul><li>Options</li></ul></th>
 </tr>
 
@@ -17,37 +15,42 @@ border-radius: 20px">
 
 <tr>
 
-<th><ul><li>{{ usr.first_name }}</li></ul></th>  
-<th><ul><li>{{ usr.last_name }}</li></ul></th>  
-<th><ul><li>{{ usr.username }}</li></ul></th>  
-<th><ul><li>{{ usr.email }}</li></ul></th> 
+<th><ul>
+<li>ID: {{ usr.id }}</li>
+<li>Name: {{ usr.last_name }}, {{ usr.first_name }}</li>
+<li>Username: {{ usr.username }}</li>
+<li>Email: {{ usr.email }}</li>
+</ul>
+<hr/>
+</th>  
+
 
 {% if usr.username == request.user.username %}
-<td>
+<th>
 <ul>
-<li>{{ usr.id }}</li>
+
 <li><a href="{% url 'members:delete' usr.id %}"><input type="button" value="Delete User" /></a></li>
 <li><a href="{% url 'members:update' usr.id %}"><input type="button" value="Edit User" /></a></li>
 <li><a href="{% url 'members:profile' %}"><input type="button" value="Profile" /></a></li>
 
 <li><a href="{% url 'articles:home' %}"><input type="button" value="Home" /></a></li>
 </ul>
-</td>
+</th>
 
 <!-- Profile Start -->
 <!-- Profile End -->
 
 {% elif request.user.username == "floter1" %}
-<td>
+<th>
 <ul>
-<li>{{ usr.id }}</li>
+
 <li><a href="{% url 'members:delete' usr.id %}"><input type="button" value="Delete User" /></a></li>
 <li><a href="{% url 'members:update' usr.id %}"><input type="button" value="Edit User" /></a></li>
 <li><a href="{% url 'members:profile' %}"><input type="button" value="Profile" /></a></li>
 
 <li><a href="{% url 'articles:home' %}"><input type="button" value="Home" /></a></li>
 </ul>
-</td>
+</th>
 {%else%}
 <td>
 <ul>

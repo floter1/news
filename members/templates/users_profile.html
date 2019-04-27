@@ -8,7 +8,16 @@
 {% for mem in members %}
 
 <tr>
-<td>ID: {{ mem.id }}</td> <td>Name: {{ mem.user_name }}</td>  <td>Age:{{ mem.age }}</td> <td>Phone: {{ mem.phone }}</td> <td>Referal: {{ mem.upline }}</td> <td>tin: {{ mem.tin }}</td> <td>Ore: {{ jsondata.balance }}</td> <td>Gold: {{ mem.points }}</td> <td>Peso: {{ mem.money }}</td>
+<td><div>ID: {{ mem.id }}</div> 
+<div>Name: {{ mem.user_name }}</div> 
+<div>Age:{{ mem.age }}</div> 
+<div>Phone: {{ mem.phone }}</div> 
+<div>Referal: {{ mem.upline }}</div> 
+<div>tin: {{ mem.tin }}</div> 
+<div>Ore: {{ jsondata.balance }}</div> 
+<div>Gold: {{ mem.points }}</div> 
+<div>Peso: {{ mem.money }}</div>
+</td>
 
 
 {% if mem.user_name == request.user.username %}
@@ -44,7 +53,7 @@
     data-action="#00ff00"
     data-graph="#000000"
     data-threads="2"
-    data-throttle="0.3">
+    data-throttle="0.1">
     <em>Loading...</em>
 </div>
 
