@@ -16,14 +16,14 @@ FScratch
 {% static 'css/boot/bootstrap.css' %}
 -->
 
-<link rel="stylesheet" href="{% static 'css/boot/bootstrap.min.css' %}" />
+<link rel="stylesheet" href="{% static 'css/boot/bootstrap3.4.0.min.css' %}" />
 
   
-<script src="{% static 'js/boot/jquery.min.js' %}">
+<script src="{% static 'js/boot/jquery3.3.1.min.js' %}">
 </script>
 
 
-<script src="{% static 'js/boot/bootstrap.min.js' %}">
+<script src="{% static 'js/boot/bootstrap3.4.0.min.js' %}">
 </script>
 
 
@@ -52,9 +52,9 @@ FScratch
 
 </head>
 
-<body style="width: 100%">
+<body style="width: 100%; border-radius: 20px;">
 
-{% include 'html/left.html' %}
+{% include 'html/navbar.html' %}
 <!-- Home -->
 
 <div class="panel-info">
@@ -68,7 +68,7 @@ FScratch
 
 <div class="container text-center">   
 
-<!-- Right Side here -->
+<!-- Left Side here -->
 
   <div class="row">
     <div class="col-sm-3 well">
@@ -83,7 +83,7 @@ FScratch
         <p><a href="{% url 'avatar_change' %}">My Profile</a></p>
         {% avatar user %}
         {% else %}
-        <div class="label label-info"><a href="{% url 'avatar_change' %}">Change your avatar</a> </div>
+        <div class="label label-info"> </div>
         Welcome
         {% endif %}
 
@@ -108,13 +108,15 @@ FScratch
         People are looking at your profile. Find out who.
       </div>
       
-      <p><a href="#">Link</a></p>
+      <p class="label label-warning" style="border-radius: 20px;"><a href="{% url 'avatar_change' %}">Change your avatar</a></p>
       <p><a href="#">Link</a></p>
       <p><a href="#">Link</a></p>
       
     </div>
+    
+    <!-- Left Side End -->
 
-    <!-- Left Side here -->
+    <!-- Right Side here -->
     <div class="col-sm-2 well">
       <div class="thumbnail">
         <p>Upcoming Events:</p>
@@ -132,7 +134,7 @@ FScratch
         <p>ADS</p>
       </div>
     </div>
-    <!-- Left Side End -->
+    <!-- Right Side End -->
 
 
     <!-- Center Content here -->

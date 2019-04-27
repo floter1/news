@@ -4,8 +4,6 @@
 style="background-color: white;
 border-radius: 20px">
 
-{% for usr in users %}
-
 <tr>
 <th><ul><li>FirstName</li></ul></th>
 <th><ul><li>LastName</li></ul></th>
@@ -13,6 +11,10 @@ border-radius: 20px">
 <th><ul><li>Email</li></ul></th>
 <th><ul><li>Options</li></ul></th>
 </tr>
+
+
+{% for usr in users %}
+
 <tr>
 
 <th><ul><li>{{ usr.first_name }}</li></ul></th>  
